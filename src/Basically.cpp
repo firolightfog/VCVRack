@@ -1156,6 +1156,8 @@ struct BasicallyWidget : ModuleWidget {
                                  "Blue on Black",
                                  "Black on White",
                                  "Blue on White"};
+	menu->addChild(createSubmenuItem("Screen colors", "",
+	[=](Menu* menu) {
     for (int i = 0; i < std::end(default_colors) - std::begin(default_colors);
          i++) {
       long long int scheme = default_colors[i];
@@ -1164,6 +1166,8 @@ struct BasicallyWidget : ModuleWidget {
           [=]() {module->screen_colors = scheme;}
       ));
     }
+	}));
+		
     // Options
     menu->addChild(new MenuSeparator);
     menu->addChild(createBoolPtrMenuItem("Highlight error line", "",
